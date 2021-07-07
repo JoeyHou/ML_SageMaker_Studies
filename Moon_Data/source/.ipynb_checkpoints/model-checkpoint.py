@@ -27,8 +27,8 @@ class SimpleNet(nn.Module):
            :return: A single, sigmoid activated value
          '''
         # your code, here
-        x = self.fc1(x)
+        x = fc1(x)
         x = F.relu(x)
-        x = self.fc2(x)
+        x = fc2(x)
         x = self.sigmoid(x)
         return x

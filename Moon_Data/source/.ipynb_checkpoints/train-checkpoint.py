@@ -126,7 +126,7 @@ if __name__ == '__main__':
     parser.add_argument('--hosts', type=list, default=json.loads(os.environ['SM_HOSTS']))
     parser.add_argument('--current-host', type=str, default=os.environ['SM_CURRENT_HOST'])
     parser.add_argument('--model-dir', type=str, default=os.environ['SM_MODEL_DIR'])
-    parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
+    parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAINING'])
     
     # Training Parameters, given
     parser.add_argument('--batch-size', type=int, default=64, metavar='N',
@@ -173,6 +173,7 @@ if __name__ == '__main__':
     optimizer = optim.Adam(model.parameters())
     criterion = torch.nn.BCELoss()
 
+    
     # Trains the model (given line of code, which calls the above training function)
     # This function *also* saves the model state dictionary
     train(model, train_loader, args.epochs, optimizer, criterion, device)
